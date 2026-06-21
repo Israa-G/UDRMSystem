@@ -14,6 +14,14 @@ string University::getName() const
 {
     return name;
 }
+const vector<Student> &University::getStudents() const
+{
+    return students;
+}
+const vector<Dormitory> &University::getDormitories() const
+{
+    return dormitories;
+}
 
 void University::setName(const string &Name)
 {

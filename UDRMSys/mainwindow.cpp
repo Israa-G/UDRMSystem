@@ -42,6 +42,40 @@ void MainWindow::log(const QString &msg)
     ui->logBox->append("[" + time + "] " + msg);
 }
 
+void MainWindow::refreshAllTables()
+{
+    //refresh stus table
+    ui->tableStudents->setRowCount(0);
+    const auto& students = uni.getStudents();
+    for (const auto& s : students) {
+        int row = ui->tableStudents->rowCount();
+        ui->tableStudents->insertRow(row);
+        ui->tableStudents->setItem(row, 0, new QTableWidgetItem(QString::number(s.getId())));
+        ui->tableStudents->setItem(row, 1, new QTableWidgetItem(QString::fromStdString(s.getName())));
+        ui->tableStudents->setItem(row, 2, new QTableWidgetItem(QString::number(s.getAcademicYear())));
+    }
+
+    //refresh dorms table
+    ui->tableDorms->setRowCount(0);
+    const auto& dorms = uni.getDormitories();
+    for (const auto& d : dorms) {
+        int row = ui->tableDorms->rowCount();
+        ui->tableDorms->insertRow(row);
+        ui->tableDorms->setItem(row, 0, new QTableWidgetItem(QString::fromStdString(d.getName())));
+        ui->tableDorms->setItem(row, 1, new QTableWidgetItem(QString(d.getMaxPavLet())));
+        ui->tableDorms->setItem(row, 2, new QTableWidgetItem(QString::number(d.getMaxFlrs())));
+        ui->tableDorms->setItem(row, 3, new QTableWidgetItem(QString::number(d.getMaxRoomPerFlr())));
+    }
+
+    // refresh room table
+    refreshRoomTable(ui->comboDormForRoom->currentText());
+
+    //refresh dorm Combos
+    refreshDormCombos();
+
+    log("Tables refreshed after loading data!");
+}
+
 // students tab:
 void MainWindow::on_btnAddStudent_clicked()
 {

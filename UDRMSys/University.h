@@ -18,6 +18,8 @@ public:
     University(string);
 
     string getName() const;
+    const vector<Student>& getStudents() const;
+    const vector<Dormitory>& getDormitories() const;
     void setName(const string &);
 
     // dormitory management

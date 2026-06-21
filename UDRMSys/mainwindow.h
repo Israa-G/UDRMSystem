@@ -45,6 +45,7 @@ private:
     University uni;
 
     void log(const QString &msg);
+    void refreshAllTables();
     void refreshDormCombos();
     void refreshRoomTable(const QString &dormName);
 };

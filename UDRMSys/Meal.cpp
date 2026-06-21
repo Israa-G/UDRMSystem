@@ -58,7 +58,7 @@ bool Meal::addConsumer(long long studentId)
 {
     //checking for existance 
     for (long long consumerId : consumers) {
-        if (consumerId == id) {
+        if (consumerId == studentId) {
             return false; 
         }
     }

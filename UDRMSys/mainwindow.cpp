@@ -9,6 +9,7 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     uni.loadFromFile("udrms_data.txt");
+    refreshAllTables(); 
     // connect buttons:
     // student tab:
     connect(ui->btnAddStudent, &QPushButton::clicked, this, &MainWindow::on_btnAddStudent_clicked);

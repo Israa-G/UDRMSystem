@@ -56,6 +56,13 @@ bool Meal::hasConsumed(long long studentId) const
 
 bool Meal::addConsumer(long long studentId)
 {
+    //checking for existance 
+    for (long long consumerId : consumers) {
+        if (consumerId == id) {
+            return false; 
+        }
+    }
+    
     if (hasConsumed(studentId))
         return false;
 

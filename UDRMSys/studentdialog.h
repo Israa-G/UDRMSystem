@@ -1,0 +1,26 @@
+#ifndef STUDENTDIALOG_H
+#define STUDENTDIALOG_H
+
+#include <QDialog>
+
+namespace Ui
+{
+    class StudentDialog;
+}
+
+class StudentDialog : public QDialog
+{
+    Q_OBJECT
+
+public:
+    explicit StudentDialog(QWidget *parent = nullptr);
+    ~StudentDialog();
+    QString getName() const;
+    long long getId() const;
+    int getYear() const;
+
+private:
+    Ui::StudentDialog *ui;
+};
+
+#endif
